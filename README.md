@@ -22,8 +22,7 @@ SGPageContentCollectionView（内部由 UICollectionView 实现）
 
 
 ##  Installation
-* 1、CocoaPods 导入 pod 'SGPagingViewSwift', '~> 0.0.1'
-* 2、下载、拖拽 “SGPagingViewSwift” 文件夹到工程中
+* 下载、拖拽 “SGPagingViewSwift” 文件夹到工程中
 
 
 ## 代码介绍（详细使用, 请参考 Demo）
