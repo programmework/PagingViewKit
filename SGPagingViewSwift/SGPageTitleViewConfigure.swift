@@ -1,7 +1,7 @@
 //
 //  SGPagingViewSwift
 //  Version 0.0.1
-//  GitHub：https://github.com/kingsic
+//  GitHub：https://github.com/kingsic/SGPagingView-Swift
 //
 //  SGPageTitleViewConfigure.swift
 //  SGPagingViewSwiftExample
@@ -80,12 +80,12 @@ class SGPageTitleViewConfigure: NSObject {
     /// 指示器滚动位置改变样式，默认为 Default
     var indicatorScrollStyle: IndicatorScrollStyle = .Default
     
-    // MARK: - 按钮之间分割线属性
-    /// 是否显示按钮之间的分割线，默认为 false
+    // MARK: - 标题间分割线属性
+    /// 是否显示标题间分割线，默认为 false
     var showVerticalSeparator: Bool = false
-    /// 按钮之间的分割线颜色，默认为红色
+    /// 标题间分割线颜色，默认为红色
     var verticalSeparatorColor: UIColor = .red
-    /// 按钮之间的分割线额外减少的高度，默认为 0.0f
+    /// 标题间分割线额外减少的高度，默认为 0.0f
     var verticalSeparatorReduceHeight: CGFloat = 0.0
     
     // MARK: - badge 相关属性

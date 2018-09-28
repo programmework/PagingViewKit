@@ -1,7 +1,6 @@
 # SGPagingView-Swift
 
 #### [Objective-C Version](https://github.com/kingsic/SGPagingView)
-#### iOS技术交流群：429899752
 
 
 ## 结构图
@@ -25,7 +24,7 @@ SGPageContentCollectionView（内部由 UICollectionView 实现）
 * 下载、拖拽 “SGPagingViewSwift” 文件夹到工程中
 
 
-## 代码介绍（详细使用, 请参考 Demo）
+## 代码介绍
 ##### SGPagingView 的使用（详细使用, 请参考 Demo）
 ```
 // SGPageTitleViewConfigure
