@@ -11,19 +11,19 @@ import UIKit
 class SGPageTitleButton: UIButton {
 }
 
-public protocol SGPageTitleViewDelegate : NSObjectProtocol {
+protocol SGPageTitleViewDelegate : NSObjectProtocol {
     /// index 当前选中标题对应的下标值
     func pageTitleView(pageTitleView: SGPageTitleView, index: Int)
 }
 
-public class SGPageTitleView: UIView {
+class SGPageTitleView: UIView {
     // MARK: - 给外界属性
     /// 选中标题按钮下标，默认为 0
-    public var index: Int = 0
+    var index: Int = 0
     /// 重置选中标题按钮下标（用于子控制器内的点击事件改变标题的选中下标）
-    public var resetIndex: Int?
+    var resetIndex: Int?
     /// 拓展 init 方法
-    public init(frame: CGRect, delegate: SGPageTitleViewDelegate, titleNames: [String], configure: SGPageTitleViewConfigure) {
+    init(frame: CGRect, delegate: SGPageTitleViewDelegate, titleNames: [String], configure: SGPageTitleViewConfigure) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white.withAlphaComponent(0.77)
         self.delegateTitleView = delegate
@@ -55,7 +55,7 @@ public class SGPageTitleView: UIView {
     private var endB: CGFloat = 0.0
     
     // MARK: - layoutSubviews
-    override public func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         P_btn_action(button: btnMArr[index])
     }
@@ -243,7 +243,7 @@ extension SGPageTitleView {
 // MARK: - 对外提供的方法
 extension SGPageTitleView {
     /// 对外界提供的方法，获取 PageContent 的 progress／originalIndex／targetIndex
-    public func setPageTitleView(progress: CGFloat, originalIndex: Int, targetIndex: Int) {
+    func setPageTitleView(progress: CGFloat, originalIndex: Int, targetIndex: Int) {
         // 1、取出 originalBtn、targetBtn
         let originalBtn: UIButton = btnMArr[originalIndex]
         let targetBtn: UIButton = btnMArr[targetIndex]
@@ -293,7 +293,7 @@ extension SGPageTitleView {
 // MARK: - 对外提供的方法（badge 添加与删除 重置标题文字）
 extension SGPageTitleView {
     /// 根据标题下标值添加 badge
-    public func addBadge(index: Int) {
+    func addBadge(index: Int) {
         let btn = btnMArr[index];
 
         let badge = UIView()
@@ -311,7 +311,7 @@ extension SGPageTitleView {
         btn.addSubview(badge)
     }
     /// 根据标题下标值移除 badge
-    public func removeBadge(index: Int) {
+    func removeBadge(index: Int) {
         let btn = btnMArr[index];
         btn.subviews.forEach { (button) in
             if button.tag != 0 {
@@ -320,7 +320,7 @@ extension SGPageTitleView {
         }
     }
     /// 根据标题下标值重置标题文字
-    public func resetTitle(title: String, index: Int) {
+    func resetTitle(title: String, index: Int) {
         let btn = btnMArr[index]
         btn.setTitle(title, for: .normal)
         if self.signBtnIndex == index {
@@ -340,7 +340,7 @@ extension SGPageTitleView {
 // MARK: - 内部方法
 extension SGPageTitleView {
     private func P_size(string: String, font: UIFont) -> CGSize {
-        let attrDict = [NSAttributedString.Key.font: font]
+        let attrDict = [NSAttributedStringKey.font: font]
         let attrString = NSAttributedString(string: string, attributes: attrDict)
         return attrString.boundingRect(with: CGSize(width: 0, height: 0), options: .usesLineFragmentOrigin, context: nil).size
     }

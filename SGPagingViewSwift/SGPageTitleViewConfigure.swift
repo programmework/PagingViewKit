@@ -1,6 +1,6 @@
 //
 //  SGPagingViewSwift
-//  Version 0.0.5
+//  Version 0.0.1
 //  GitHub：https://github.com/kingsic/SGPagingView-Swift
 //
 //  SGPageTitleViewConfigure.swift
@@ -12,88 +12,88 @@
 
 import UIKit
 
-public enum IndicatorStyle : Int {
+enum IndicatorStyle : Int {
     case Default = 0    /// 下划线样式
     case Cover = 1      /// 遮盖样式
     case Fixed = 2      /// 固定样式
     case Dynamic = 3    /// 动态样式（仅在 IndicatorScrollStyle.Default 样式下支持）
 }
 
-public enum IndicatorScrollStyle : Int {
+enum IndicatorScrollStyle : Int {
     case Default = 0    /// 指示器位置跟随内容滚动而改变
     case Half = 1       /// 内容滚动一半时指示器位置改变
     case End = 2        /// 内容滚动结束时指示器位置改变
 }
 
-public class SGPageTitleViewConfigure: NSObject {
+class SGPageTitleViewConfigure: NSObject {
     // MARK: - SGPageTitleView 属性
     /// SGPageTitleView 是否需要弹性效果，默认为 true
-    public var needBounces: Bool = true
+    var needBounces: Bool = true
     /// 是否显示底部分割线，默认为 true
-    public var showBottomSeparator: Bool = true
+    var showBottomSeparator: Bool = true
     /// SGPageTitleView 底部分割线颜色，默认为 lightGray
-    public var bottomSeparatorColor: UIColor = .lightGray
+    var bottomSeparatorColor: UIColor = .lightGray
     
     // MARK: - 标题属性
     /// 标题文字字号大小，默认 15 号字体
-    public var titleFont: UIFont = UIFont.systemFont(ofSize: 15)
+    var titleFont: UIFont = UIFont.systemFont(ofSize: 15)
     /// 标题文字选中字号大小，默认 15 号字体。一旦设置此属性，titleTextZoom 属性将不起作用
-    public var titleSelectedFont: UIFont = UIFont.systemFont(ofSize: 15)
+    var titleSelectedFont: UIFont = UIFont.systemFont(ofSize: 15)
     /// 普通状态下标题文字的颜色，默认为黑色
-    public var titleColor: UIColor = .black
+    var titleColor: UIColor = .black
     /// 选中状态下标题文字的颜色，默认为红色
-    public var titleSelectedColor: UIColor = .red
+    var titleSelectedColor: UIColor = .red
     /// 是否让标题文字具有渐变效果，默认为 false
-    public var titleGradientEffect: Bool = false
+    var titleGradientEffect: Bool = false
     /// 是否让标题文字具有缩放效果，默认为 false
-    public var titleTextZoom: Bool = false
+    var titleTextZoom: Bool = false
     /// 标题文字缩放比，默认为 0.1f，取值范围 0.0 ～ 1.0f
-    public var titleTextZoomRatio: CGFloat = 0.1
+    var titleTextZoomRatio: CGFloat = 0.1
     /// 标题额外增加的宽度，默认为 20.0f
-    public var titleAdditionalWidth: CGFloat = 20.0
+    var titleAdditionalWidth: CGFloat = 20.0
     
     //MARK: - 指示器属性
     /// 是否显示指示器，默认为 true
-    public var showIndicator: Bool = true
+    var showIndicator: Bool = true
     /// 指示器颜色，默认为红色
-    public var indicatorColor: UIColor = .red
+    var indicatorColor: UIColor = .red
     /// 指示器高度，默认为 2.0f
-    public var indicatorHeight: CGFloat = 2.0
+    var indicatorHeight: CGFloat = 2.0
     /// 指示器动画时间，默认为 0.1f，取值范围 0 ～ 0.3f
-    public var indicatorAnimationTime: TimeInterval = 0.1
+    var indicatorAnimationTime: TimeInterval = 0.1
     /// 指示器样式，默认为 Default
-    public var indicatorStyle: IndicatorStyle = .Default
+    var indicatorStyle: IndicatorStyle = .Default
     /// 指示器圆角大小，默认为 0.0f
-    public var indicatorCornerRadius: CGFloat = 0.0
+    var indicatorCornerRadius: CGFloat = 0.0
     /// 指示器遮盖样式外的其他样式下指示器与底部之间的距离，默认为 0.0f
-    public var indicatorToBottomDistance: CGFloat = 0.0
+    var indicatorToBottomDistance: CGFloat = 0.0
     /// 指示器遮盖样式下的边框宽度，默认为 0.0f
-    public var indicatorBorderWidth: CGFloat = 0.0
+    var indicatorBorderWidth: CGFloat = 0.0
     /// 指示器遮盖样式下的边框颜色，默认为 clear
-    public var indicatorBorderColor: UIColor = .clear
+    var indicatorBorderColor: UIColor = .clear
     /// 指示器遮盖、下划线样式下额外增加的宽度，默认为 0.0f；介于标题文字宽度与按钮宽度之间
-    public var indicatorAdditionalWidth: CGFloat = 0.0
+    var indicatorAdditionalWidth: CGFloat = 0.0
     /// 指示器固定样式下宽度，默认为 20.0f；最大宽度并没有做限制，请根据实际情况妥善设置
-    public var indicatorFixedWidth: CGFloat = 20.0
+    var indicatorFixedWidth: CGFloat = 20.0
     /// 指示器动态样式下宽度，默认为 20.0f；最大宽度并没有做限制，请根据实际情况妥善设置
-    public var indicatorDynamicWidth: CGFloat = 20.0
+    var indicatorDynamicWidth: CGFloat = 20.0
     /// 指示器滚动位置改变样式，默认为 Default
-    public var indicatorScrollStyle: IndicatorScrollStyle = .Default
+    var indicatorScrollStyle: IndicatorScrollStyle = .Default
     
     // MARK: - 标题间分割线属性
     /// 是否显示标题间分割线，默认为 false
-    public var showVerticalSeparator: Bool = false
+    var showVerticalSeparator: Bool = false
     /// 标题间分割线颜色，默认为红色
-    public var verticalSeparatorColor: UIColor = .red
+    var verticalSeparatorColor: UIColor = .red
     /// 标题间分割线额外减少的高度，默认为 0.0f
-    public var verticalSeparatorReduceHeight: CGFloat = 0.0
+    var verticalSeparatorReduceHeight: CGFloat = 0.0
     
     // MARK: - badge 相关属性
     /// badge 颜色，默认红色
-    public var badgeColor: UIColor = .red
+    var badgeColor: UIColor = .red
     /// badge 尺寸大小，默认为 7.0f
-    public var badgeSize: CGFloat = 7.0
+    var badgeSize: CGFloat = 7.0
     /// badge 偏移量，默认（0，0）
-    public var badgeOff: CGPoint = .zero
+    var badgeOff: CGPoint = .zero
 }
 

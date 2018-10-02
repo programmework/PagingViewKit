@@ -8,11 +8,11 @@
 
 import UIKit
 
-public class SGPageViewPopGestureVC: UIViewController {
+class SGPageViewPopGestureVC: UIViewController {
 
     private var _delegate: UIGestureRecognizerDelegate? = nil
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if (navigationController?.viewControllers.count)! > 1 {
@@ -23,14 +23,14 @@ public class SGPageViewPopGestureVC: UIViewController {
         }
     }
     
-    override public func viewWillDisappear(_ animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // 设置系统返回手势的代理为我们刚进入控制器的时候记录的系统的返回手势代理
         navigationController?.interactivePopGestureRecognizer?.delegate = _delegate
     }
 
-    override public func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -38,12 +38,12 @@ public class SGPageViewPopGestureVC: UIViewController {
 
 // MARK: - UIGestureRecognizerDelegate
 extension SGPageViewPopGestureVC: UIGestureRecognizerDelegate {
-    private func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return navigationController!.children.count > 1
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigationController!.childViewControllers.count > 1
     }
     
-    private func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return navigationController!.children.count > 1
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return navigationController!.childViewControllers.count > 1
     }
 }
 
