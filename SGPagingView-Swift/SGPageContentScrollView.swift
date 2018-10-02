@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol SGPageContentScrollViewDelegate: NSObjectProtocol {
+@objc public protocol SGPageContentScrollViewDelegate: NSObjectProtocol {
     /**
      *  联动 SGPageTitleView 的方法
      *
@@ -33,7 +33,7 @@ import UIKit
     @objc optional func pageContentScrollViewDidEndDecelerating()
 }
 
-class SGPageContentScrollView: UIView {
+public class SGPageContentScrollView: UIView {
     /**
      *  拓展 init 方法
      *
@@ -41,7 +41,7 @@ class SGPageContentScrollView: UIView {
      *  @param parentVC     当前控制器
      *  @param childVCs     子控制器个数
      */
-    init(frame: CGRect, parentVC: UIViewController, childVCs: [UIViewController]) {
+    public init(frame: CGRect, parentVC: UIViewController, childVCs: [UIViewController]) {
         super.init(frame: frame)
         self.parentVC = parentVC
         self.childVCs = childVCs
@@ -53,11 +53,11 @@ class SGPageContentScrollView: UIView {
     
     // MARK: - 给外界提供的属性
     /// SGPageContentCollectionViewDelegate
-    weak var delegateScrollView: SGPageContentScrollViewDelegate?
+    public weak var delegateScrollView: SGPageContentScrollViewDelegate?
     /// SGPageContentCollectionView 是否可以滚动，默认为 true
-    var isScrollEnabled: Bool = true
+    public var isScrollEnabled: Bool = true
     /// 点击标题触发动画切换滚动内容，默认为 false
-    var isAnimated: Bool = false
+    public var isAnimated: Bool = false
     
     // MARK: - 私有属性
     // 外界父控制器
@@ -86,7 +86,7 @@ class SGPageContentScrollView: UIView {
 // MARK: - 给外界提供的方法
 extension SGPageContentScrollView {
     /// 根据 SGPageTitleView 标题选中时的下标并显示相应的子控制器
-    func setPageContentScrollView(index: Int) {
+    public func setPageContentScrollView(index: Int) {
         let offsetX = CGFloat(index) * scrollView.frame.size.width
      
         // 2、切换子控制器的时候，执行上个子控制器的 viewWillDisappear 方法
@@ -99,8 +99,8 @@ extension SGPageContentScrollView {
             let childVC: UIViewController = childVCs[index]
             
             firstAdd = false
-            if !(parentVC?.childViewControllers.contains(childVC))! {
-                parentVC?.addChildViewController(childVC)
+            if !(parentVC?.children.contains(childVC))! {
+                parentVC?.addChild(childVC)
                 firstAdd = true
             }
             
@@ -118,7 +118,7 @@ extension SGPageContentScrollView {
             childVC.endAppearanceTransition()
             
             if (firstAdd) {
-                childVC.didMove(toParentViewController: parentVC)
+                childVC.didMove(toParent: parentVC)
             }
             
             // 3.1、记录上个子控制器
@@ -150,7 +150,7 @@ extension SGPageContentScrollView {
 
 // MARK：- UIScrollViewDelegate
 extension SGPageContentScrollView: UIScrollViewDelegate {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    private func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         startOffsetX = scrollView.contentOffset.x
         scroll = true
         if delegateScrollView != nil && (delegateScrollView?.responds(to: #selector(delegateScrollView?.pageContentScrollViewWillBeginDragging)))! {
@@ -158,7 +158,7 @@ extension SGPageContentScrollView: UIScrollViewDelegate {
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    private func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         scroll = false
         // 1、根据标题下标计算 pageContent 偏移量
         let offsetX: CGFloat = scrollView.contentOffset.x
@@ -173,8 +173,8 @@ extension SGPageContentScrollView: UIScrollViewDelegate {
         
         firstAdd = false
 
-        if !(parentVC?.childViewControllers.contains(childVC))! {
-            parentVC?.addChildViewController(childVC)
+        if !(parentVC?.children.contains(childVC))! {
+            parentVC?.addChild(childVC)
             firstAdd = true
         }
         
@@ -192,7 +192,7 @@ extension SGPageContentScrollView: UIScrollViewDelegate {
         childVC.endAppearanceTransition()
         
         if (firstAdd) {
-            childVC.didMove(toParentViewController: parentVC)
+            childVC.didMove(toParent: parentVC)
         }
         
         // 4.1、记录上个展示的子控制器、记录当前子控制器偏移量
@@ -210,7 +210,7 @@ extension SGPageContentScrollView: UIScrollViewDelegate {
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    private func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if isAnimated == true && scroll == false {
             return
         }

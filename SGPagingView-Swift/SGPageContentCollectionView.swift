@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol SGPageContentCollectionViewDelegate: NSObjectProtocol {
+@objc public protocol SGPageContentCollectionViewDelegate: NSObjectProtocol {
     /**
      *  联动 SGPageTitleView 的方法
      *
@@ -35,7 +35,7 @@ import UIKit
 
 private let cellID = "cellID"
 
-class SGPageContentCollectionView: UIView {
+public class SGPageContentCollectionView: UIView {
     /**
      *  拓展 init 方法
      *
@@ -43,7 +43,7 @@ class SGPageContentCollectionView: UIView {
      *  @param parentVC     当前控制器
      *  @param childVCs     子控制器个数
      */
-    init(frame: CGRect, parentVC: UIViewController, childVCs: [UIViewController]) {
+    public init(frame: CGRect, parentVC: UIViewController, childVCs: [UIViewController]) {
         super.init(frame: frame)
         self.parentVC = parentVC
         self.childVCs = childVCs
@@ -55,11 +55,11 @@ class SGPageContentCollectionView: UIView {
 
     // MARK: - 给外界提供的属性
     /// SGPageContentCollectionViewDelegate
-    weak var delegateCollectionView: SGPageContentCollectionViewDelegate?
+    public weak var delegateCollectionView: SGPageContentCollectionViewDelegate?
     /// SGPageContentCollectionView 是否可以滚动，默认为 true
-    var isScrollEnabled: Bool = true
+    public var isScrollEnabled: Bool = true
     /// 点击标题触发动画切换滚动内容，默认为 false
-    var isAnimated: Bool = false
+    public var isAnimated: Bool = false
     
     // MARK: - 私有属性
     private var parentVC: UIViewController?
@@ -92,7 +92,7 @@ class SGPageContentCollectionView: UIView {
 // MARK: - 给外界提供的方法
 extension SGPageContentCollectionView {
     /// 根据 SGPageTitleView 标题选中时的下标并显示相应的子控制器
-    func setPageContentCollectionView(index: Int) {
+    public func setPageContentCollectionView(index: Int) {
         let offsetX = CGFloat(index) * collectionView.frame.size.width
         startOffsetX = offsetX
         if previousCVCIndex != index {
@@ -116,26 +116,26 @@ extension SGPageContentCollectionView {
 
 // MARK: - UICollectionView - 数据源方法
 extension SGPageContentCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return childVCs.count
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
         cell.contentView.subviews.forEach { (subView) in
             subView.removeFromSuperview()
         }
         let childVC = childVCs[indexPath.item]
-        parentVC?.addChildViewController(childVC)
+        parentVC?.addChild(childVC)
         cell.contentView.addSubview(childVC.view)
         childVC.view.frame = cell.contentView.frame
-        childVC.didMove(toParentViewController: parentVC)
+        childVC.didMove(toParent: parentVC)
         return cell
     }
 }
 
 // MARK: - UIScrollView - 代理方法
 extension SGPageContentCollectionView {
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    private func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         startOffsetX = scrollView.contentOffset.x
         scroll = true
         if (delegateCollectionView != nil) && (delegateCollectionView?.responds(to: #selector(delegateCollectionView?.pageContentCollectionViewWillBeginDragging)))! {
@@ -143,7 +143,7 @@ extension SGPageContentCollectionView {
         }
     }
     
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    private func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         scroll = false
         let offsetX = scrollView.contentOffset.x
         previousCVCIndex = Int(offsetX / scrollView.frame.size.width)
@@ -155,7 +155,7 @@ extension SGPageContentCollectionView {
         }
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    private func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if isAnimated == true && scroll == false {
             return
         }
