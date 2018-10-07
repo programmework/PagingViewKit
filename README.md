@@ -4,7 +4,7 @@
 
 
 ## 结构图
-![](https://github.com/kingsic/SGPagingView/raw/master/Picture/SGPagingView.png)
+![](https://github.com/kingsic/Kar98k/blob/master/SGPagingView/SGPagingView.png)
 ``` 
 SGPageTitleViewConfigure（SGPageTitleView 初始化配置信息）
 
@@ -17,7 +17,7 @@ SGPageContentCollectionView（内部由 UICollectionView 实现）
 
 
 ## 效果图
-![](https://github.com/kingsic/SGPagingView/raw/master/Picture/sorgle.gif)
+![](https://github.com/kingsic/Kar98k/blob/master/SGPagingView/SGPagingView.gif)
 
 
 ##  Installation
@@ -60,6 +60,8 @@ func pageContentScrollView(pageContentScrollView: SGPageContentScrollView, progr
 
 
 ## Concluding remarks
+
+* 案例项目 [网易新闻](https://github.com/kingsic/NetEase)
 
 * 更多内容介绍请参考 [OC版](https://github.com/kingsic/SGPagingView)
 

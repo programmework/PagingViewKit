@@ -36,7 +36,7 @@ extension GradientEffectVC {
             pageTitleViewY = 88
         }
         
-        let titles = ["精选", "请等待2s", "QQGroup", "429899752"]
+        let titles = ["精选", "电影", "电视剧", "综艺"]
         let configure = SGPageTitleViewConfigure()
         configure.titleColor = UIColor.lightGray
         configure.titleSelectedColor = UIColor.black
