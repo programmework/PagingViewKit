@@ -21,7 +21,7 @@ SGPageContentCollectionView（内部由 UICollectionView 实现）
 
 
 ##  Installation
-* 下载、拖拽 “SGPagingViewSwift” 文件夹到工程中
+* 下载、拖拽 “SGPagingView-Swift” 文件夹到工程中
 
 
 ## 代码介绍
@@ -55,7 +55,7 @@ func pageContentScrollView(pageContentScrollView: SGPageContentScrollView, progr
 
 
 ## Requirements
-* iOS 8.0 +
+* iOS 11.0 +
 * Xcode 9.4.1+
 
 
