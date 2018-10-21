@@ -77,7 +77,7 @@ class SGPageTitleView: UIView {
         let size = self.frame.size
         let height: CGFloat = 0.5
         bottomSeparator.frame = CGRect(x: 0, y: size.height - height, width: size.width, height: height)
-        bottomSeparator.backgroundColor = configure.bottomSeparatorColor;
+        bottomSeparator.backgroundColor = configure.bottomSeparatorColor
         return bottomSeparator
     }()
     private lazy var indicator: UIView = {
@@ -108,7 +108,7 @@ class SGPageTitleView: UIView {
 
         } else {
             let indicatorHeight = configure.indicatorHeight
-            indicator.frame.size.height = indicatorHeight;
+            indicator.frame.size.height = indicatorHeight
             indicator.frame.origin.y = self.frame.size.height - indicatorHeight - configure.indicatorToBottomDistance
         }
         return indicator
@@ -119,12 +119,12 @@ class SGPageTitleView: UIView {
 extension SGPageTitleView {
     private func setupSubviews() {
         let tempView = UIView()
-        self.addSubview(tempView);
+        self.addSubview(tempView)
         self.addSubview(self.scrollView)
         self.setupTitleButtons()
         // 添加底部分割线
         if (configure.showBottomSeparator) {
-            self.addSubview(self.bottomSeparator);
+            self.addSubview(self.bottomSeparator)
         }
         // 添加指示器
         if (configure.showIndicator) {
@@ -280,26 +280,26 @@ extension SGPageTitleView {
         if configureTitleSelectedFont.fontName == defaultTitleFont.fontName && configureTitleSelectedFont.pointSize == defaultTitleFont.pointSize {
             if configure.titleTextZoom == true {
                 // originalBtn 缩放
-                let originalBtnZoomRatio = (1 - progress) * configure.titleTextZoomRatio;
+                let originalBtnZoomRatio = (1 - progress) * configure.titleTextZoomRatio
                 originalBtn.transform = CGAffineTransform(scaleX: originalBtnZoomRatio + 1, y: originalBtnZoomRatio + 1)
                 // targetBtn 缩放
-                let targetBtnZoomRatio = progress * configure.titleTextZoomRatio;
+                let targetBtnZoomRatio = progress * configure.titleTextZoomRatio
                 targetBtn.transform = CGAffineTransform(scaleX: targetBtnZoomRatio + 1, y: targetBtnZoomRatio + 1)
             }
         }
     }
 }
 
-// MARK: - 对外提供的方法（badge 添加与删除 重置标题文字）
+// MARK: - 对外提供的方法（badge 添加与删除）
 extension SGPageTitleView {
     /// 根据标题下标值添加 badge
     func addBadge(index: Int) {
-        let btn = btnMArr[index];
+        let btn = btnMArr[index]
 
         let badge = UIView()
         badge.layer.backgroundColor = configure.badgeColor.cgColor
         badge.layer.cornerRadius = CGFloat(0.5 * configure.badgeSize)
-        badge.tag = 2018 + index;
+        badge.tag = 2018 + index
         let btnTextWidth = P_size(string: btn.currentTitle!, font: configure.titleFont).width
         let btnTextHeight = P_size(string: btn.currentTitle!, font: configure.titleFont).height
 
@@ -312,13 +312,17 @@ extension SGPageTitleView {
     }
     /// 根据标题下标值移除 badge
     func removeBadge(index: Int) {
-        let btn = btnMArr[index];
+        let btn = btnMArr[index]
         btn.subviews.forEach { (button) in
             if button.tag != 0 {
                 button.removeFromSuperview()
             }
         }
     }
+}
+
+// MARK: - 对外提供的方法（重置标题文字、标题文字颜色及指示器颜色）
+extension SGPageTitleView {
     /// 根据标题下标值重置标题文字
     func resetTitle(title: String, index: Int) {
         let btn = btnMArr[index]
@@ -330,10 +334,26 @@ extension SGPageTitleView {
                 if tempIndicatorWidth > btn.frame.size.width {
                     tempIndicatorWidth = btn.frame.size.width
                 }
-                indicator.frame.size.width = tempIndicatorWidth;
+                indicator.frame.size.width = tempIndicatorWidth
                 indicator.center.x = btn.center.x
             }
         }
+    }
+    /// 重置指示器颜色
+    func resetIndicatorColor(color: UIColor) {
+        indicator.backgroundColor = color
+    }
+    /// 重置标题普通状态、选中状态下文字颜色
+    func resetTitleColor(color: UIColor, selectedColor: UIColor) {
+        btnMArr.forEach { (button) in
+            button.setTitleColor(color, for: .normal)
+            button.setTitleColor(selectedColor, for: .selected)
+        }
+    }
+    /// 重置标题普通状态、选中状态下文字颜色及指示器颜色方法
+    func resetTitleColor(color: UIColor, selectedColor: UIColor, indicatorColor: UIColor) {
+        resetTitleColor(color: color, selectedColor: selectedColor)
+        resetIndicatorColor(color: indicatorColor)
     }
 }
 
@@ -360,7 +380,7 @@ extension SGPageTitleView {
             delegateTitleView?.pageTitleView(pageTitleView: self, index: button.tag)
         }
         // 5、标记按钮下标
-        signBtnIndex = button.tag;
+        signBtnIndex = button.tag
     }
     
     /// 改变按钮的选择状态
@@ -490,7 +510,7 @@ extension SGPageTitleView {
                 }
             } else {
                 if progress <= 0.5 {
-                    let originalBtnIndicatorX = originalBtnMaxX - 0.5 * (btnWidth - configure.indicatorDynamicWidth) - configure.indicatorDynamicWidth;
+                    let originalBtnIndicatorX = originalBtnMaxX - 0.5 * (btnWidth - configure.indicatorDynamicWidth) - configure.indicatorDynamicWidth
                     indicator.frame.origin.x = originalBtnIndicatorX - 2 * progress * btnWidth
                     indicator.frame.size.width = configure.indicatorDynamicWidth + 2 * progress * btnWidth
                 } else {
@@ -541,7 +561,7 @@ extension SGPageTitleView {
             let moveX = moveTotalX * progress
             indicator.center.x = originalBtn.center.x + moveX
         } else {
-            indicator.frame.size.width = tempIndicatorWidth;
+            indicator.frame.size.width = tempIndicatorWidth
         }
 
     }
