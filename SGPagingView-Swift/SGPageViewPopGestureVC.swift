@@ -39,11 +39,11 @@ class SGPageViewPopGestureVC: UIViewController {
 // MARK: - UIGestureRecognizerDelegate
 extension SGPageViewPopGestureVC: UIGestureRecognizerDelegate {
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return navigationController!.childViewControllers.count > 1
+        return navigationController!.children.count > 1
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return navigationController!.childViewControllers.count > 1
+        return navigationController!.children.count > 1
     }
 }
 

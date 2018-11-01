@@ -212,8 +212,8 @@
 				8DA86A88216A2EAE0068102A /* SGPageTitleViewConfigure.swift */,
 				8DA86A89216A2EAE0068102A /* SGPageTitleView.swift */,
 				8DA86A8A216A2EAE0068102A /* SGPageContentCollectionView.swift */,
-				8DA86A8B216A2EAE0068102A /* SGPageViewPopGestureVC.swift */,
 				8DA86A8C216A2EAE0068102A /* SGPageContentScrollView.swift */,
+				8DA86A8B216A2EAE0068102A /* SGPageViewPopGestureVC.swift */,
 			);
 			path = "SGPagingView-Swift";
 			sourceTree = SOURCE_ROOT;
@@ -286,13 +286,16 @@
 				TargetAttributes = {
 					8D1C6BAE214C905500E9BCB4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 					};
 					8D1C6BC2214C905800E9BCB4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 8D1C6BAE214C905500E9BCB4;
 					};
 					8D1C6BCD214C905800E9BCB4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						TestTargetID = 8D1C6BAE214C905500E9BCB4;
 					};
 				};
@@ -555,7 +558,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SGPagingViewExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -573,7 +576,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SGPagingViewExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -592,7 +595,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SGPagingViewExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SGPagingViewExample.app/SGPagingViewExample";
 			};
@@ -612,7 +615,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SGPagingViewExampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SGPagingViewExample.app/SGPagingViewExample";
 			};
@@ -631,7 +634,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SGPagingViewExampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SGPagingViewExample;
 			};
@@ -650,7 +653,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SGPagingViewExampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = SGPagingViewExample;
 			};

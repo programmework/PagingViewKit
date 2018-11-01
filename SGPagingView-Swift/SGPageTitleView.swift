@@ -360,7 +360,7 @@ extension SGPageTitleView {
 // MARK: - 内部方法
 extension SGPageTitleView {
     private func P_size(string: String, font: UIFont) -> CGSize {
-        let attrDict = [NSAttributedStringKey.font: font]
+        let attrDict = [NSAttributedString.Key.font: font]
         let attrString = NSAttributedString(string: string, attributes: attrDict)
         return attrString.boundingRect(with: CGSize(width: 0, height: 0), options: .usesLineFragmentOrigin, context: nil).size
     }

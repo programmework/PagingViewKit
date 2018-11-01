@@ -55,8 +55,9 @@ func pageContentScrollView(pageContentScrollView: SGPageContentScrollView, progr
 
 
 ## Requirements
-* iOS 11.0 +
-* Xcode 9.4.1+
+* iOS 9.0 +
+* Xcode 10.0 +（Xcode 9.0 请在 [releases](https://github.com/kingsic/SGPagingView-Swift/releases) 中下载对应版本）
+
 
 
 ## Author

@@ -125,10 +125,10 @@ extension SGPageContentCollectionView: UICollectionViewDelegate, UICollectionVie
             subView.removeFromSuperview()
         }
         let childVC = childVCs[indexPath.item]
-        parentVC?.addChildViewController(childVC)
+        parentVC?.addChild(childVC)
         cell.contentView.addSubview(childVC.view)
         childVC.view.frame = cell.contentView.frame
-        childVC.didMove(toParentViewController: parentVC)
+        childVC.didMove(toParent: parentVC)
         return cell
     }
 }

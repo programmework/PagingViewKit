@@ -99,8 +99,8 @@ extension SGPageContentScrollView {
             let childVC: UIViewController = childVCs[index]
             
             firstAdd = false
-            if !(parentVC?.childViewControllers.contains(childVC))! {
-                parentVC?.addChildViewController(childVC)
+            if !(parentVC?.children.contains(childVC))! {
+                parentVC?.addChild(childVC)
                 firstAdd = true
             }
             
@@ -118,7 +118,7 @@ extension SGPageContentScrollView {
             childVC.endAppearanceTransition()
             
             if (firstAdd) {
-                childVC.didMove(toParentViewController: parentVC)
+                childVC.didMove(toParent: parentVC)
             }
             
             // 3.1、记录上个子控制器
@@ -173,8 +173,8 @@ extension SGPageContentScrollView: UIScrollViewDelegate {
         
         firstAdd = false
 
-        if !(parentVC?.childViewControllers.contains(childVC))! {
-            parentVC?.addChildViewController(childVC)
+        if !(parentVC?.children.contains(childVC))! {
+            parentVC?.addChild(childVC)
             firstAdd = true
         }
         
@@ -192,7 +192,7 @@ extension SGPageContentScrollView: UIScrollViewDelegate {
         childVC.endAppearanceTransition()
         
         if (firstAdd) {
-            childVC.didMove(toParentViewController: parentVC)
+            childVC.didMove(toParent: parentVC)
         }
         
         // 4.1、记录上个展示的子控制器、记录当前子控制器偏移量
