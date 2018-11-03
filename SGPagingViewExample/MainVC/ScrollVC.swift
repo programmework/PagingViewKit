@@ -18,6 +18,10 @@ class ScrollVC: UIViewController {
         // Do any additional setup after loading the view.
         setupSGPagingView()
     }
+    
+    deinit {
+        print("ScrollVC - - deinit")
+    }
 }
 
 extension ScrollVC {

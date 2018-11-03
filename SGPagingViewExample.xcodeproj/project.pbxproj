@@ -211,8 +211,8 @@
 			children = (
 				8DA86A88216A2EAE0068102A /* SGPageTitleViewConfigure.swift */,
 				8DA86A89216A2EAE0068102A /* SGPageTitleView.swift */,
-				8DA86A8A216A2EAE0068102A /* SGPageContentCollectionView.swift */,
 				8DA86A8C216A2EAE0068102A /* SGPageContentScrollView.swift */,
+				8DA86A8A216A2EAE0068102A /* SGPageContentCollectionView.swift */,
 				8DA86A8B216A2EAE0068102A /* SGPageViewPopGestureVC.swift */,
 			);
 			path = "SGPagingView-Swift";

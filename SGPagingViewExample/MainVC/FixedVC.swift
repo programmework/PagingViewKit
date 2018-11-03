@@ -18,6 +18,10 @@ class FixedVC: UIViewController {
         // Do any additional setup after loading the view.
         setupSGPagingView()
     }
+    
+    deinit {
+        print("FixedVC - - deinit")
+    }
 }
 
 extension FixedVC {

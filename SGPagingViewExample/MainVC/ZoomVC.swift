@@ -18,6 +18,10 @@ class ZoomVC: UIViewController {
         // Do any additional setup after loading the view.
         setupSGPagingView()
     }
+    
+    deinit {
+        print("ZoomVC - - deinit")
+    }
 }
 
 extension ZoomVC {

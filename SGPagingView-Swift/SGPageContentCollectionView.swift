@@ -62,7 +62,7 @@ class SGPageContentCollectionView: UIView {
     var isAnimated: Bool = false
     
     // MARK: - 私有属性
-    private var parentVC: UIViewController?
+    private weak var parentVC: UIViewController?
     private var childVCs: [UIViewController] = []
     private var startOffsetX: CGFloat = 0.0
     private var previousCVCIndex: Int = -1

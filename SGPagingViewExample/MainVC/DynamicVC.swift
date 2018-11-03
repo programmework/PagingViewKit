@@ -18,6 +18,10 @@ class DynamicVC: UIViewController {
         // Do any additional setup after loading the view.
         setupSGPagingView()
     }
+    
+    deinit {
+        print("DynamicVC - - deinit")
+    }
 }
 
 extension DynamicVC {

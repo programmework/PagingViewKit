@@ -1,6 +1,6 @@
 //
 //  SGPagingViewSwift
-//  Version 0.0.5
+//  Version 0.0.6
 //  GitHub：https://github.com/kingsic/SGPagingView-Swift
 //
 //  SGPageTitleViewConfigure.swift

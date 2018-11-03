@@ -61,7 +61,7 @@ class SGPageContentScrollView: UIView {
     
     // MARK: - 私有属性
     // 外界父控制器
-    private var parentVC: UIViewController?
+    private weak var parentVC: UIViewController?
     private var childVCs: [UIViewController] = []
     private var startOffsetX: CGFloat = 0.0
     private var previousCVC: UIViewController?

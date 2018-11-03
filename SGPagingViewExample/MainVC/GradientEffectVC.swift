@@ -24,6 +24,10 @@ class GradientEffectVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    deinit {
+        print("GradientEffectVC - - deinit")
+    }
 }
 
 extension GradientEffectVC {
