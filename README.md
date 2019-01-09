@@ -59,13 +59,6 @@ func pageContentScrollView(pageContentScrollView: SGPageContentScrollView, progr
 * Xcode 10.0 +（Xcode 9.0 请在 [releases](https://github.com/kingsic/SGPagingView-Swift/releases) 中下载对应版本）
 
 
-
-## Author
-* Email：kingsic@126.com
-* QQ群：(付费群)<br>
-![](https://github.com/kingsic/Kar98k/blob/master/Source/QQGroup_qrcode.png)
-
-
 ## Concluding remarks
 * 案例项目 [网易新闻](https://github.com/kingsic/NetEaseNews)
 * 更多内容介绍请参考 [OC版](https://github.com/kingsic/SGPagingView)
