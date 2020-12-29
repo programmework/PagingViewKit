@@ -21,7 +21,7 @@ private class PagingTitleButton: UIButton {
 }
 
 public class PagingTitleView: UIView {
-    init(frame: CGRect, titles:[String], delegate: PagingTitleViewDelegate, configure: PagingTitleViewConfigure) {
+    public init(frame: CGRect, titles:[String], delegate: PagingTitleViewDelegate, configure: PagingTitleViewConfigure) {
         super.init(frame: frame)
         backgroundColor = UIColor.white.withAlphaComponent(0.77)
         assert(!titles.isEmpty, "PagingTitleView 初始化方法中的配置信息必须设置")

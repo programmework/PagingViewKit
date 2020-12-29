@@ -1,6 +1,6 @@
 # PagingViewKit
 
-#### [Objective-C Version](https://github.com/kingsic/SGPagingView)
+#### [Objc版本](https://github.com/kingsic/SGPagingView)
 
 
 ## 结构图
@@ -20,8 +20,8 @@ PagingContentCollectionView（内部由 UICollectionView 实现）
 
 
 ##  Installation
-* 1、CocoaPods 导入 pod 'PagingViewKit', '~> 1.0.0'
-* 2、下载、拖拽 “Source” 文件夹到工程中
+* 1、CocoaPods 导入 pod 'PagingViewKit', '~> 1.0.1'
+* 2、下载项目将 “Source” 文件夹内的类拖到到工程中
 
 
 ## 代码介绍
