@@ -77,8 +77,8 @@ public class PagingTitleView: UIView {
     private lazy var bottomSeparator: UIView = {
        let tempBottomSeparator = UIView()
         tempBottomSeparator.backgroundColor = configure.bottomSeparatorColor
-        let w: CGFloat = frame.size.width;
-        let h: CGFloat = 0.5;
+        let w: CGFloat = frame.size.width
+        let h: CGFloat = 0.5
         let y: CGFloat = frame.size.height - h
         tempBottomSeparator.frame = CGRect(x: 0, y: y, width: w, height: h)
         return tempBottomSeparator
@@ -326,11 +326,11 @@ public extension PagingTitleView {
                     indicator.frame.size.width = configure.indicatorDynamicWidth + 2 * progress * btnWidth
                 } else {
                     let targetBtnIndicatorX: CGFloat = targetBtnMaxX - configure.indicatorDynamicWidth - 0.5 * (btnWidth - configure.indicatorDynamicWidth)
-                    indicator.frame.origin.x = targetBtnIndicatorX; // 这句代码必须写，防止滚动结束之后指示器位置存在偏差，这里的偏差是由于 progress >= 0.8 导致的
+                    indicator.frame.origin.x = targetBtnIndicatorX // 这句代码必须写，防止滚动结束之后指示器位置存在偏差，这里的偏差是由于 progress >= 0.8 导致的
                     indicator.frame.size.width = configure.indicatorDynamicWidth + 2 * (1 - progress) * btnWidth
                 }
             }
-            return;
+            return
         }
         
         // Default、Cover 样式处理
@@ -564,7 +564,7 @@ public extension PagingTitleView {
                     indicator.frame.size.width = 2 * progress * btnCenterXDistance + configure.indicatorDynamicWidth
                 } else {
                     let targetBtnX: CGFloat = targetBtn.frame.maxX - configure.indicatorDynamicWidth - 0.5 * (targetBtn.frame.size.width - configure.indicatorDynamicWidth)
-                    indicator.frame.origin.x = targetBtnX + 2 * (progress - 1) * btnCenterXDistance;
+                    indicator.frame.origin.x = targetBtnX + 2 * (progress - 1) * btnCenterXDistance
                     indicator.frame.size.width = 2 * (1 - progress) * btnCenterXDistance + configure.indicatorDynamicWidth
                 }
             } else {
@@ -628,8 +628,8 @@ public extension PagingTitleView {
             offsetX = totalOffsetX * progress + 0.5 * configure.additionalWidth - 0.5 * configure.indicatorAdditionalWidth
             distance = progress * (totalDistance - totalOffsetX) - configure.additionalWidth
             /// 计算 indicator 新的 frame
-            indicator.frame.origin.x = currentBtn.frame.origin.x + offsetX;
-            indicator.frame.size.width = currentBtn.frame.size.width + distance + configure.indicatorAdditionalWidth;
+            indicator.frame.origin.x = currentBtn.frame.origin.x + offsetX
+            indicator.frame.size.width = currentBtn.frame.size.width + distance + configure.indicatorAdditionalWidth
         }
     }
     /// 有指示器：从左到右自动布局：Half、End 滚动样式
@@ -663,7 +663,7 @@ public extension PagingTitleView {
                         changeSelectedBtn(btn: currentBtn)
                     } else {
                         let targetBtnX: CGFloat = targetBtn.frame.maxX - configure.indicatorDynamicWidth - 0.5 * (targetBtn.frame.size.width - configure.indicatorDynamicWidth)
-                        indicator.frame.origin.x = targetBtnX + 2 * (progress - 1) * btnCenterXDistance;
+                        indicator.frame.origin.x = targetBtnX + 2 * (progress - 1) * btnCenterXDistance
                         indicator.frame.size.width = 2 * (1 - progress) * btnCenterXDistance + configure.indicatorDynamicWidth
                         changeSelectedBtn(btn: targetBtn)
                     }
@@ -739,7 +739,7 @@ public extension PagingTitleView {
                     changeSelectedBtn(btn: currentBtn)
                 } else {
                     let targetBtnX: CGFloat = targetBtn.frame.maxX - configure.indicatorDynamicWidth - 0.5 * (targetBtn.frame.size.width - configure.indicatorDynamicWidth)
-                    indicator.frame.origin.x = targetBtnX + 2 * (progress - 1) * btnCenterXDistance;
+                    indicator.frame.origin.x = targetBtnX + 2 * (progress - 1) * btnCenterXDistance
                     indicator.frame.size.width = 2 * (1 - progress) * btnCenterXDistance + configure.indicatorDynamicWidth
                     if progress >= 0.8 {
                         changeSelectedBtn(btn: targetBtn)
@@ -997,6 +997,8 @@ private extension PagingTitleView {
             tempBtn = btn
         }
         
+        index = btn.tag
+        
         let selectedFont: UIFont = configure.selectedFont
         let defaultFont: UIFont = .systemFont(ofSize: 15)
         let selectedFontName: String = selectedFont.fontName
@@ -1083,7 +1085,7 @@ private extension PagingTitleView {
             }
             
             if self.configure.indicatorType == .Dynamic {
-                self.indicator.frame.size.width = self.configure.indicatorDynamicWidth;
+                self.indicator.frame.size.width = self.configure.indicatorDynamicWidth
                 self.indicator.center.x = btn.center.x
                 return
             }

@@ -15,7 +15,6 @@ import UIKit
     /// - parameter progress: 滚动进度值
     /// - parameter currentIndex: 当前子视图下标值
     /// - parameter targetIndex: 目标子视图下标值
-    ///
     @objc optional func pagingContentScrollView(pagingContentScrollView: PagingContentScrollView, progress: CGFloat, currentIndex: Int, targetIndex: Int)
     /// 内容视图当前对应子视图的下标值
     ///
@@ -23,7 +22,6 @@ import UIKit
     /// - parameter progress: 滚动进度值
     /// - parameter currentIndex: 当前子视图下标值
     /// - parameter targetIndex: 目标子视图下标值
-    ///
     @objc optional func pagingContentScrollView(pagingContentScrollView: PagingContentScrollView, index: Int)
     /// 内容视图开始拖拽的方法
     @objc optional func pagingContentScrollViewWillBeginDragging()

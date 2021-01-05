@@ -1,6 +1,6 @@
 # PagingViewKit
 
-#### [Objc版本](https://github.com/kingsic/SGPagingView)
+#### [Objc 版本](https://github.com/kingsic/SGPagingView)
 
 
 ## 结构图
@@ -20,12 +20,12 @@ PagingContentCollectionView（内部由 UICollectionView 实现）
 
 
 ##  Installation
-* 1、CocoaPods 导入 pod 'PagingViewKit', '~> 1.0.1'
+* 1、CocoaPods 导入 pod 'PagingViewKit', '~> 1.1.0'
 * 2、下载项目将 “Source” 文件夹内的类拖到到工程中
 
 
 ## 代码介绍
-##### PagingViewKit 的使用（详细使用, 请参考 Demo）
+* 初始化方法
 ```
 let configure: PagingTitleViewConfigure = PagingTitleViewConfigure()
 // PagingTitle
@@ -38,14 +38,14 @@ pagingContent.delegate = self
 view.addSubview(pagingContent)
 ```
 
-##### PagingTitleView 代理方法
+*  PagingTitleView 代理方法
 ```
 func pagingTitleView(pagingTitleView: PagingTitleView, index: Int) {
     pagingContentView.setPagingContentScrollView(index: index)
 }
 ```
 
-##### PagingContentScrollView 代理方法
+*  PagingContentScrollView 代理方法
 ```
 func pagingContentScrollView(pagingContentScrollView: PagingContentScrollView, progress: CGFloat, currentIndex: Int, targetIndex: Int) {
     pagingTitleView.setPagingTitleView(progress: progress, currentIndex: currentIndex, targetIndex: targetIndex)
@@ -55,10 +55,11 @@ func pagingContentScrollView(pagingContentScrollView: PagingContentScrollView, p
 
 ## Requirements
 * iOS 10.0 +
+* Swift 5.0 +
 
 
 ## Concluding remarks
 * 案例项目 [网易新闻](https://github.com/kingsic/NetEaseNews)
-* 更多内容介绍请参考 [OC版](https://github.com/kingsic/SGPagingView)
+* 更多内容介绍请参考 [Objc 版本](https://github.com/kingsic/SGPagingView)
 * 如有问题请参考OC版本介绍或加QQ群：825339547
 
