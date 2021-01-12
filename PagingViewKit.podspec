@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |spec|
   spec.name         = "PagingViewKit"
-  spec.version      = "1.1.0"
+  spec.version      = "1.1.5"
   spec.summary      = "A powerful and easy to use segment view"
   spec.homepage     = "https://github.com/kingsic/PagingViewKit"
   spec.license      = "MIT"

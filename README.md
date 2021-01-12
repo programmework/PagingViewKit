@@ -20,8 +20,7 @@ PagingContentCollectionView（内部由 UICollectionView 实现）
 
 
 ##  Installation
-* 1、CocoaPods 导入 pod 'PagingViewKit', '~> 1.1.0'
-* 2、下载项目将 “Source” 文件夹内的类拖到到工程中
+* CocoaPods 导入 pod 'PagingViewKit', '~> 1.1.5'
 
 
 ## 代码介绍
@@ -61,5 +60,5 @@ func pagingContentScrollView(pagingContentScrollView: PagingContentScrollView, p
 ## Concluding remarks
 * 案例项目 [网易新闻](https://github.com/kingsic/NetEaseNews)
 * 更多内容介绍请参考 [Objc 版本](https://github.com/kingsic/SGPagingView)
-* 如有问题请参考OC版本介绍或加QQ群：825339547
+* 如有问题 [issues](https://github.com/kingsic/PagingViewKit/issues) 或加QQ群：825339547
 

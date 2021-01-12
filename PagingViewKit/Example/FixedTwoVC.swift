@@ -47,6 +47,7 @@ class FixedTwoVC: UIViewController, PagingTitleViewDelegate, PagingContentScroll
         let tempRect: CGRect = CGRect.init(x: 0, y: y, width: view.frame.size.width, height: view.frame.size.height - y)
         let pagingContent: PagingContentScrollView = PagingContentScrollView(frame: tempRect, parentVC: self, childVCs: vcs)
         pagingContent.isScrollEnabled = false
+        pagingContent.isAnimated = true
         return pagingContent
     }()
     

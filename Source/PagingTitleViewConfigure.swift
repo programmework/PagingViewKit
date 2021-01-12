@@ -41,7 +41,7 @@ public class PagingTitleViewConfigure: UIView {
     public var selectedColor: UIColor = .red
     /// 标题文字是否具有渐变效果，默认为 false
     public var gradientEffect = false
-    /// 标题文字是否具有缩放效果，默认为 false。为 true 时，请与 textZoomRatio 结合使用，否则不起作用。（特别需要注意的是：1、此属性为 true 时，与 indicatorScrollStyle 属性不兼容；2、此属性为 true 时，与 indicatorType 属性不兼容，但可支持 indicatorType 的 Dynamic 样式）
+    /// 标题文字是否具有缩放效果，默认为 false。为 true 时，请与 textZoomRatio 结合使用，否则不起作用。（特别需要注意的是：此属性为 true 时，与 indicatorScrollStyle 属性不兼容）
     public var textZoom = false
     /// 标题文字缩放比，默认为 0.0f，取值范围 0.0 ～ 1.0f。请与 textZoom = true 时结合使用，否则不起作用
     public var textZoomRatio: CGFloat = 0.0
@@ -71,7 +71,7 @@ public class PagingTitleViewConfigure: UIView {
     public var indicatorDynamicWidth: CGFloat = 20.0
     /// 指示器距 PageTitleView 底部间的距离，默认为 0.0f
     public var indicatorToBottomDistance: CGFloat = 0.0
-    /// 指示器样式，默认为 Default。（特别需要注意的是：此属性与 textZoom = true 时不兼容，但 Dynamic 样式下是兼容的）
+    /// 指示器样式，默认为 Default
     public var indicatorType: IndicatorType = .Default
     /// 滚动内容视图时，指示器切换样式，默认为 Default。（特别需要注意的是：此属性与 textZoom = true 时不兼容）
     public var indicatorScrollStyle: IndicatorScrollStyle = .Default
@@ -90,7 +90,7 @@ public class PagingTitleViewConfigure: UIView {
     /// badge 的高，默认为 7.0f
     public var badgeHeight: CGFloat = 7.0
     /// badge 的偏移量，默认为 CGPointZero
-    public var badgeOff: CGPoint = CGPoint.zero
+    public var badgeOff: CGPoint = .zero
     /// badge 的文字颜色，默认为 whiteColor（只针对：addBadge(text:index:) 方法有效）
     public var badgeTextColor: UIColor = .white
     /// badge 的文字大小，默认为 10 号字体（只针对：addBadge(text:index:) 方法有效）

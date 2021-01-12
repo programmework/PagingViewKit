@@ -295,12 +295,10 @@ public extension PagingTitleView {
 
         // Fixed 样式处理
         if configure.indicatorType == .Fixed {
-            let targetBtnMaxX = CGFloat(targetBtn.tag + 1) * btnWidth
-            let currentBtnMaxX = CGFloat(currentBtn.tag + 1) * btnWidth
-            let targetBtnIndicatorX: CGFloat = targetBtnMaxX - 0.5 * (btnWidth - configure.indicatorFixedWidth) - configure.indicatorFixedWidth
-            let currentBtnIndicatorX: CGFloat = currentBtnMaxX - 0.5 * (btnWidth - configure.indicatorFixedWidth) - configure.indicatorFixedWidth
-            let totalOffsetX: CGFloat = targetBtnIndicatorX - currentBtnIndicatorX
-            indicator.frame.origin.x = currentBtnIndicatorX + progress * totalOffsetX
+            let targetBtnCenterX: CGFloat = targetBtn.center.x
+            let currentBtnCenterX: CGFloat = currentBtn.center.x
+            let totalOffsetCenterX: CGFloat = targetBtnCenterX - currentBtnCenterX
+            indicator.center.x = currentBtnCenterX + progress * totalOffsetCenterX
             return
         }
         
@@ -337,21 +335,13 @@ public extension PagingTitleView {
         // 文字宽度
         let targetBtnTextWidth: CGFloat = P_calculateWidth(string: targetBtn.currentTitle!, font: configure.font)
         let currentBtnTextWidth: CGFloat = P_calculateWidth(string: currentBtn.currentTitle!, font: configure.font)
-        var targetBtnMaxX: CGFloat = 0.0
-        var currentBtnMaxX: CGFloat = 0.0
-        /// 这里的缩放是标题按钮缩放，按钮的 frame 会发生变化，开启缩放性后，如果指示器还使用 CGRectGetMaxX 获取按钮的最大 X 值是会比之前的值大，这样会导致指示器的位置相对按钮位置不对应（存在一定的偏移）；所以这里根据按钮下标计算原本的 CGRectGetMaxX 的值，缩放后的不去理会，这样指示器位置会与按钮位置保持一致。
-        /// 在缩放属性关闭情况下，下面的计算结果一样的，所以可以省略判断，直接采用第一种计算结果（这个只是做个记录对指示器位置与按钮保持一致的方法）
-        if configure.textZoom {
-            targetBtnMaxX = CGFloat(targetBtn.tag + 1) * btnWidth
-            currentBtnMaxX = CGFloat(currentBtn.tag + 1) * btnWidth
-        } else {
-            targetBtnMaxX = targetBtn.frame.maxX
-            currentBtnMaxX = currentBtn.frame.maxX
-        }
+        let targetBtnMaxX: CGFloat = CGFloat(targetBtn.tag + 1) * btnWidth
+        let currentBtnMaxX: CGFloat = CGFloat(currentBtn.tag + 1) * btnWidth
+
         let targetIndicatorX: CGFloat = targetBtnMaxX - targetBtnTextWidth - 0.5 * (btnWidth - targetBtnTextWidth + configure.indicatorAdditionalWidth)
         let currentIndicatorX: CGFloat = currentBtnMaxX - currentBtnTextWidth - 0.5 * (btnWidth - currentBtnTextWidth + configure.indicatorAdditionalWidth)
         let totalOffsetX: CGFloat = targetIndicatorX - currentIndicatorX
-        
+
         /// 2、计算文字之间差值
         // targetBtn 文字右边的 x 值
         let targetBtnRightTextX: CGFloat = targetBtnMaxX - 0.5 * (btnWidth - targetBtnTextWidth)
@@ -362,7 +352,7 @@ public extension PagingTitleView {
         let offsetX: CGFloat = totalOffsetX * progress
         // 计算 indicatorView 滚动时文字宽度的偏移量
         let distance: CGFloat = progress * (totalRightTextDistance - totalOffsetX)
-        
+
         /// 3、计算 indicatorView 新的 frame
         indicator.frame.origin.x = currentIndicatorX + offsetX
         let indicatorWidth: CGFloat = configure.indicatorAdditionalWidth + currentBtnTextWidth + distance
@@ -552,7 +542,6 @@ public extension PagingTitleView {
             return
         }
 
-        
         // 处理 Dynamic 样式
         if configure.indicatorType == .Dynamic {
             let currentBtnTag = currentBtn.tag
@@ -584,27 +573,23 @@ public extension PagingTitleView {
         }
         
         // 处理指示器 Default、Cover 样式
-        if configure.textZoom && configure.showIndicator {
+        if configure.textZoom {
             let currentBtnTextWidth: CGFloat = P_calculateWidth(string: currentBtn.currentTitle!, font: configure.font)
             let targetBtnTextWidth: CGFloat = P_calculateWidth(string: targetBtn.currentTitle!, font: configure.font)
             // 文字距离差
             let diffText: CGFloat = targetBtnTextWidth - currentBtnTextWidth
             // 中心点距离差
             let distanceCenter: CGFloat = targetBtn.center.x - currentBtn.center.x
-            var offsetCenterX: CGFloat = 0.0
+            let offsetCenterX: CGFloat = distanceCenter * progress
             
-            let indicatorWidth: CGFloat = configure.indicatorAdditionalWidth + targetBtnTextWidth + configure.textZoomRatio * targetBtnTextWidth
+            let indicatorWidth: CGFloat = configure.indicatorAdditionalWidth + targetBtnTextWidth
             if indicatorWidth >= targetBtn.frame.size.width {
-                offsetCenterX = distanceCenter * progress
-                indicator.center.x = currentBtn.center.x + offsetCenterX
-                let tempIndicatorWidth: CGFloat = currentBtnTextWidth + diffText * progress
-                indicator.frame.size.width = targetBtn.frame.size.width - configure.textZoomRatio * tempIndicatorWidth
+                indicator.frame.size.width = targetBtn.frame.size.width
             } else {
-                offsetCenterX = distanceCenter * progress
-                indicator.center.x = currentBtn.center.x + offsetCenterX
                 let tempIndicatorWidth: CGFloat = currentBtnTextWidth + diffText * progress
-                indicator.frame.size.width = tempIndicatorWidth + configure.textZoomRatio * tempIndicatorWidth + configure.indicatorAdditionalWidth
+                indicator.frame.size.width = tempIndicatorWidth + configure.indicatorAdditionalWidth
             }
+            indicator.center.x = currentBtn.center.x + offsetCenterX
             return
         }
 
@@ -1028,13 +1013,23 @@ private extension PagingTitleView {
                     configure.indicatorAdditionalWidth = diffForntAfter
                 }
 
-                let btnTextWidth = P_calculateWidth(string: btn.currentTitle!, font: configure.font)
-                var indicatorWidth = btnTextWidth + configure.indicatorAdditionalWidth + configure.textZoomRatio * btnTextWidth
-                if indicatorWidth > btn.frame.size.width {
-                    indicatorWidth = btn.frame.size.width - configure.textZoomRatio * btnTextWidth
+
+                if configure.indicatorType == .Fixed {
+                    var indicatorWidth = configure.indicatorFixedWidth
+                    if indicatorWidth > btn.frame.size.width {
+                        indicatorWidth = btn.frame.size.width
+                    }
+                    indicator.frame.size.width = configure.indicatorFixedWidth
+                    indicator.center.x = btn.center.x
+                } else {
+                    let btnTextWidth = P_calculateWidth(string: btn.currentTitle!, font: configure.font)
+                    var indicatorWidth = btnTextWidth + configure.indicatorAdditionalWidth
+                    if indicatorWidth > btn.frame.size.width {
+                        indicatorWidth = btn.frame.size.width
+                    }
+                    indicator.frame.size.width = indicatorWidth
+                    indicator.center.x = btn.center.x
                 }
-                indicator.frame.size.width = indicatorWidth
-                indicator.center.x = btn.center.x
             }
             
             // 此处作用：避免滚动过程中点击标题手指不离开屏幕的前提下再次滚动造成的误差（由于文字渐变效果导致未选中标题的不准确处理）

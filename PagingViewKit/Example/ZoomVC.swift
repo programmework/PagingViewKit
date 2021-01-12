@@ -28,7 +28,6 @@ class ZoomVC: UIViewController, PagingTitleViewDelegate, PagingContentCollection
         configure.gradientEffect = true
         configure.textZoom = true
         configure.textZoomRatio = 0.2
-        configure.indicatorType = .Dynamic
         
         let frame = CGRect.init(x: 0, y: 100, width: view.frame.size.width, height: 44)
         let titles = ["关注", "推荐", "热榜", "免费小说"]
