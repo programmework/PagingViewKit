@@ -154,7 +154,7 @@ public extension PagingTitleView {
     func resetTitle(color: UIColor, selectedColor: UIColor) {
         for (_, btn) in tempBtns.enumerated() {
             btn.setTitleColor(color, for: .normal)
-            btn.setTitleColor(color, for: .selected)
+            btn.setTitleColor(selectedColor, for: .selected)
         }
         if configure.gradientEffect {
             configure.color = color
