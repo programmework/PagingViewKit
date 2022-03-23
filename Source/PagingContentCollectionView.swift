@@ -71,7 +71,7 @@ public class PagingContentCollectionView: UIView {
         tempCollectionView.showsHorizontalScrollIndicator = false
         tempCollectionView.isPagingEnabled = true
         tempCollectionView.bounces = false
-        tempCollectionView.backgroundColor = UIColor.white
+        tempCollectionView.backgroundColor = UIColor.clear
         tempCollectionView.delegate = self
         tempCollectionView.dataSource = self
         tempCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
