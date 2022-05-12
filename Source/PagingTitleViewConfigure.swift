@@ -29,6 +29,8 @@ public class PagingTitleViewConfigure: UIView {
     public var showBottomSeparator = true
     /// PageTitleView 底部分割线颜色，默认为 lightGrayColor
     public var bottomSeparatorColor: UIColor = .lightGray
+    /// PageTitleView 左右内边距，默认为 0.0f。静止样式下标题均分布局不起作用
+    public var contentInsetSpacing: CGFloat = 0.0
     
     // MARK: PageTitleView 标题相关属性
     /// 标题文字大小，默认为 15 号字体

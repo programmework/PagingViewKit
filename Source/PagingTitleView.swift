@@ -847,11 +847,12 @@ private extension PagingTitleView {
     
     func addTitleBtns() {
         let titleCount = titles.count
+        let startX = configure.contentInsetSpacing
         titles.forEach { (title) in
             let titleWidth: CGFloat = P_calculateWidth(string: title, font: configure.font)
             allBtnTextWidth += titleWidth
         }
-        allBtnWidth = allBtnTextWidth + configure.additionalWidth * CGFloat(titleCount)
+        allBtnWidth = allBtnTextWidth + configure.additionalWidth * CGFloat(titleCount) + startX * 2.0
         allBtnWidth = CGFloat(ceilf(Float(allBtnWidth)))
         
         for idx in 0..<titleCount {
@@ -889,7 +890,7 @@ private extension PagingTitleView {
 
             if configure.equivalence { /// 固定样式下均分布局标题
                 for (index, btn) in tempBtns.enumerated() {
-                    let btnX = btnW * CGFloat(index)
+                    let btnX = startX + btnW * CGFloat(index)
                     btn.frame = CGRect.init(x: btnX, y: btnY, width: btnW, height: btnH)
                 }
                 
@@ -923,7 +924,7 @@ private extension PagingTitleView {
     
     /// 从左到右布局标题
     func fromLeftToRightLayout() {
-        var btnX: CGFloat = 0.0
+        var btnX: CGFloat = configure.contentInsetSpacing
         let btnY: CGFloat = 0.0
         var btnW: CGFloat = 0.0
         let btnH: CGFloat = frame.size.height
@@ -949,7 +950,7 @@ private extension PagingTitleView {
         }
         
         let lastBtn = tempBtns.last
-        scrollView.contentSize = CGSize(width: (lastBtn?.frame.maxX)!, height: frame.size.height)
+        scrollView.contentSize = CGSize(width: lastBtn!.frame.maxX + configure.contentInsetSpacing * 2.0, height: frame.size.height)
     }
 }
 // MARK: 标题按钮的点击事件
